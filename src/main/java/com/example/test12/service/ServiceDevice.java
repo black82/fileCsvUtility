@@ -38,10 +38,10 @@ public class ServiceDevice {
     }
 
     public Device creamDeviceToArrayString(String[] strings) {
-        if (strings != null && strings.length != 0) {
+        if (strings != null && strings.length == 5) {
             return new Device(strings[0], parseStringToDate(strings[1]), Integer.parseInt(strings[2]), strings[3], Integer.parseInt(strings[4]));
         } else {
-            throw new NullPointerException("List strings to csv file is nul or is empty");
+            throw new NullPointerException("List strings to csv file is null or is empty");
         }
 
     }
