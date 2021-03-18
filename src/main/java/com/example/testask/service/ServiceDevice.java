@@ -1,6 +1,6 @@
-package com.example.test12.service;
+package com.example.testask.service;
 
-import com.example.test12.model.Device;
+import com.example.testask.model.Device;
 import lombok.SneakyThrows;
 
 import java.io.BufferedReader;
@@ -23,12 +23,12 @@ import java.util.stream.Stream;
 public class ServiceDevice {
 
 
-    public List<Device> readFileAndSplit() {
+    public List<Device> readFileAndBuildersDevice() {
         try (BufferedReader br = new BufferedReader(new FileReader(Objects.requireNonNull(this.getClass().getClassLoader().getResource("data/devices.csv")).getPath()))) {
             Stream<String> stringStream = br.lines().skip(1);
             return stringStream
                     .map(string -> string.split(","))
-                    .map(this::creamDeviceToArrayString)
+                    .map(this::creatDeviceToArrayString)
                     .distinct()
                     .sorted(Comparator.comparing(Device::getCALIBRATION_YEAR).reversed())
                     .collect(Collectors.toList());
@@ -37,7 +37,7 @@ public class ServiceDevice {
         }
     }
 
-    public Device creamDeviceToArrayString(String[] strings) {
+    public Device creatDeviceToArrayString(String[] strings) {
         if (strings != null && strings.length == 5) {
             return new Device(strings[0], parseStringToDate(strings[1]), Integer.parseInt(strings[2]), strings[3], Integer.parseInt(strings[4]));
         } else {

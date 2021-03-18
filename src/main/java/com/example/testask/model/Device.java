@@ -1,4 +1,4 @@
-package com.example.test12.model;
+package com.example.testask.model;
 
 import java.util.Date;
 import java.util.Objects;
